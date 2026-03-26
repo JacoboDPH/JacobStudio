@@ -12,11 +12,25 @@
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
             background: radial-gradient(1200px 500px at 50% -150px, #eef2ff 0%, #f8fafc 55%, #f8fafc 100%);
         }
+        #hero-fade {
+            will-change: opacity, transform;
+            transition: opacity 140ms linear, transform 140ms linear;
+        }
+        #top-nav {
+            transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="text-slate-900 antialiased">
     <div class="min-h-screen">
-        <header class="max-w-6xl mx-auto px-6 py-7 flex items-center justify-between">
+        <header id="top-nav" class="sticky top-0 z-40 max-w-6xl mx-auto px-6 py-7 flex items-center justify-between border border-transparent rounded-b-2xl">
             <a href="#" class="text-xl font-semibold tracking-tight text-slate-950">JacobStudio</a>
             <nav class="hidden sm:flex items-center gap-8 text-sm text-slate-600">
                 <a href="#studio" class="hover:text-slate-900 transition-colors">Estudio</a>
@@ -26,7 +40,7 @@
         </header>
 
         <main>
-            <section class="max-w-6xl mx-auto px-6 pt-12 pb-20 md:pt-24 md:pb-28">
+            <section id="hero-fade" class="max-w-6xl mx-auto px-6 pt-12 pb-20 md:pt-24 md:pb-28">
                 <span class="inline-flex items-center rounded-full border border-violet-200/80 bg-white/90 backdrop-blur px-4 py-1 text-sm font-medium text-violet-700 shadow-sm">
                     Estudio indie para iPhone
                 </span>
@@ -104,7 +118,7 @@
             <section id="followthings-showcase" class="max-w-6xl mx-auto px-6 py-16">
                 <div class="rounded-[2rem] border border-slate-800 bg-black text-white p-8 md:p-12 shadow-[0_22px_56px_rgba(2,6,23,0.45)]">
                     <h2 class="text-3xl md:text-5xl font-semibold tracking-tight">FollowThings en acción</h2>
-                    <p class="mt-3 text-slate-600 max-w-3xl">
+                    <p class="mt-3 text-slate-300 max-w-3xl">
                         Tu cuaderno de bitácora digital para hábitos, hobbies y proyectos. Registra sesiones, mide progreso y
                         mantén la motivación con una experiencia pensada para iPhone y Apple Watch.
                     </p>
@@ -128,20 +142,20 @@
                         </article>
                     </div>
 
-                    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        <img src="assets/followthings-01.png" alt="FollowThings - pantalla principal de hábitos" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-02.png" alt="FollowThings - biometría y esfuerzo" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-03.png" alt="FollowThings - captura multimedia de sesiones" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-04.png" alt="FollowThings - vista de análisis y rachas" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-05.png" alt="FollowThings - registro instantáneo en Apple Watch" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-06.png" alt="FollowThings - lista de hábitos en Apple Watch" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-07.png" alt="FollowThings - cronómetro de sesión en Apple Watch" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
-                        <img src="assets/followthings-08.png" alt="FollowThings - comparador visual antes y después" class="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40">
+                    <div class="mt-10 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5 md:overflow-visible md:snap-none">
+                        <img src="assets/followthings-01.png" alt="FollowThings - pantalla principal de hábitos" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-02.png" alt="FollowThings - biometría y esfuerzo" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-03.png" alt="FollowThings - captura multimedia de sesiones" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-04.png" alt="FollowThings - vista de análisis y rachas" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-05.png" alt="FollowThings - registro instantáneo en Apple Watch" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-06.png" alt="FollowThings - lista de hábitos en Apple Watch" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-07.png" alt="FollowThings - cronómetro de sesión en Apple Watch" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
+                        <img src="assets/followthings-08.png" alt="FollowThings - comparador visual antes y después" class="w-[74vw] max-w-[300px] shrink-0 snap-start rounded-2xl border border-white/10 shadow-lg shadow-black/40 md:w-full md:max-w-none">
                     </div>
 
                     <div class="mt-10">
-                        <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full bg-white px-7 py-3 text-slate-900 font-medium hover:bg-slate-200 transition-colors">
-                            Descargar FollowThings en App Store
+                        <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer" class="inline-block" aria-label="Descargar FollowThings en App Store">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-12 w-auto">
                         </a>
                     </div>
                 </div>
@@ -158,5 +172,37 @@
             </div>
         </footer>
     </div>
+    <script>
+        (function () {
+            var hero = document.getElementById("hero-fade");
+            var nav = document.getElementById("top-nav");
+            if (!hero) return;
+
+            function updateHeroFade() {
+                var y = window.scrollY || window.pageYOffset || 0;
+                var progress = Math.min(y / 340, 1);
+                hero.style.opacity = String(1 - progress);
+                hero.style.transform = "translateY(" + (progress * -20) + "px)";
+
+                if (nav) {
+                    if (y > 24) {
+                        nav.style.backgroundColor = "rgba(248,250,252,0.72)";
+                        nav.style.backdropFilter = "blur(14px)";
+                        nav.style.borderColor = "rgba(148,163,184,0.25)";
+                        nav.style.boxShadow = "0 10px 30px rgba(15,23,42,0.08)";
+                    } else {
+                        nav.style.backgroundColor = "transparent";
+                        nav.style.backdropFilter = "none";
+                        nav.style.borderColor = "transparent";
+                        nav.style.boxShadow = "none";
+                    }
+                }
+            }
+
+            updateHeroFade();
+            window.addEventListener("scroll", updateHeroFade, { passive: true });
+            window.addEventListener("resize", updateHeroFade);
+        })();
+    </script>
 </body>
 </html>
