@@ -4,32 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JacobStudio</title>
+    <meta name="description" content="JacobStudio: estudio indie de apps para iPhone.">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+    <div class="min-h-screen">
+        <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+            <a href="#" class="text-xl font-semibold tracking-tight">JacobStudio</a>
+            <nav class="hidden sm:flex items-center gap-8 text-sm text-slate-600">
+                <a href="#studio" class="hover:text-slate-900 transition-colors">Estudio</a>
+                <a href="#apps" class="hover:text-slate-900 transition-colors">Apps</a>
+                <a href="#contacto" class="hover:text-slate-900 transition-colors">Contacto</a>
+            </nav>
+        </header>
 
-<body class="bg-slate-900 text-white min-h-screen flex items-center justify-center">
+        <main>
+            <section class="max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-20 md:pb-24">
+                <span class="inline-flex items-center rounded-full border border-violet-200 bg-violet-50 px-4 py-1 text-sm font-medium text-violet-700">
+                    Estudio indie para iPhone
+                </span>
+                <h1 class="mt-6 text-4xl md:text-6xl font-semibold tracking-tight max-w-3xl leading-tight">
+                    Artesanía digital para apps útiles, claras y cuidadas.
+                </h1>
+                <p class="mt-6 text-lg text-slate-600 max-w-2xl">
+                    JacobStudio es mi espacio para diseñar y desarrollar productos digitales con una filosofía simple:
+                    menos ruido, más utilidad.
+                </p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="#apps" class="inline-flex items-center rounded-xl bg-slate-900 px-6 py-3 text-white font-medium hover:bg-slate-800 transition-colors">
+                        Ver apps
+                    </a>
+                    <a href="#studio" class="inline-flex items-center rounded-xl border border-slate-300 px-6 py-3 text-slate-700 font-medium hover:bg-slate-100 transition-colors">
+                        Conocer JacobStudio
+                    </a>
+                </div>
+            </section>
 
-    <div class="text-center p-10 bg-slate-800 rounded-3xl shadow-2xl border border-slate-700 max-w-md w-full mx-4">
-        
-        <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-            </svg>
-        </div>
+            <section id="studio" class="max-w-6xl mx-auto px-6 py-16">
+                <div class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm">
+                    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Que es JacobStudio</h2>
+                    <p class="mt-4 text-slate-600 max-w-3xl leading-relaxed">
+                        Soy Jacob, desarrollador indie. En JacobStudio me encargo de producto, diseno y desarrollo para crear apps
+                        con una experiencia simple, bella y centrada en las personas.
+                    </p>
+                    <div class="mt-10 grid gap-4 md:grid-cols-3">
+                        <article class="rounded-2xl border border-slate-200 p-5">
+                            <h3 class="font-semibold">Minimalismo funcional</h3>
+                            <p class="mt-2 text-sm text-slate-600">Cada pantalla tiene un proposito claro y sin elementos de sobra.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 p-5">
+                            <h3 class="font-semibold">Diseno con calma</h3>
+                            <p class="mt-2 text-sm text-slate-600">Interacciones suaves, jerarquia visual limpia y foco en legibilidad.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 p-5">
+                            <h3 class="font-semibold">Iteracion continua</h3>
+                            <p class="mt-2 text-sm text-slate-600">Escucho feedback real para mejorar cada version de cada app.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-        <h1 class="text-4xl font-bold tracking-tight mb-2">JacobStudio<span class="text-purple-500">.app</span></h1>
-        
-        <p class="text-slate-400 mb-8">Artesanía digital. Apps creadas con pasión y diseño.</p>
-        
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm font-medium border border-purple-500/20">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-            </span>
-            Construyendo la sede...
-        </div>
-        
+            <section id="apps" class="max-w-6xl mx-auto px-6 py-16">
+                <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Apps</h2>
+                <p class="mt-3 text-slate-600">Productos en activo y en construcción.</p>
+
+                <div class="mt-8">
+                    <article id="followthings" class="rounded-3xl border border-violet-100 bg-gradient-to-br from-violet-50 to-white p-8 md:p-10 shadow-sm">
+                        <div class="flex flex-wrap items-center justify-between gap-6">
+                            <div>
+                                <span class="inline-flex items-center rounded-full border border-violet-200 bg-white px-3 py-1 text-xs font-semibold text-violet-700">
+                                    iPhone
+                                </span>
+                                <h3 class="mt-4 text-3xl font-semibold tracking-tight">FollowThings</h3>
+                                <p class="mt-3 text-slate-600 max-w-2xl">
+                                    Organiza tus hábitos y tareas en una interfaz limpia y motivadora.
+                                    Hecha para mantener foco y constancia en el día a día.
+                                </p>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-xl bg-slate-900 px-5 py-3 text-white text-sm font-medium hover:bg-slate-800 transition-colors">
+                                    Ver en App Store
+                                </a>
+                                <a href="#followthings" class="inline-flex items-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors">
+                                    Ver detalles
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="max-w-6xl mx-auto px-6 py-16">
+                <div class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
+                    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">FollowThings en accion</h2>
+                    <p class="mt-3 text-slate-600 max-w-3xl">
+                        Tu cuaderno de bitácora digital para hábitos, hobbies y proyectos. Registra sesiones, mide progreso y
+                        mantén la motivación con una experiencia pensada para iPhone y Apple Watch.
+                    </p>
+
+                    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        <article class="rounded-2xl border border-slate-200 p-4">
+                            <p class="text-sm font-semibold">Registro instantáneo</p>
+                            <p class="mt-2 text-sm text-slate-600">Guarda sesiones, añade notas y puntúa tu progreso al instante.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 p-4">
+                            <p class="text-sm font-semibold">Análisis visual</p>
+                            <p class="mt-2 text-sm text-slate-600">Rachas, gráficos y lectura rápida de tu evolución mensual.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 p-4">
+                            <p class="text-sm font-semibold">Apple Watch</p>
+                            <p class="mt-2 text-sm text-slate-600">Inicia hábitos desde la muñeca y sincroniza con Apple Health.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 p-4">
+                            <p class="text-sm font-semibold">Comparador visual</p>
+                            <p class="mt-2 text-sm text-slate-600">Observa el antes y después para mantener la constancia.</p>
+                        </article>
+                    </div>
+
+                    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        <img src="assets/followthings-01.png" alt="FollowThings - pantalla principal de hábitos" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-02.png" alt="FollowThings - biometría y esfuerzo" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-03.png" alt="FollowThings - captura multimedia de sesiones" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-04.png" alt="FollowThings - vista de análisis y rachas" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-05.png" alt="FollowThings - registro instantáneo en Apple Watch" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-06.png" alt="FollowThings - lista de hábitos en Apple Watch" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-07.png" alt="FollowThings - cronómetro de sesión en Apple Watch" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                        <img src="assets/followthings-08.png" alt="FollowThings - comparador visual antes y después" class="w-full rounded-2xl border border-slate-200 shadow-sm">
+                    </div>
+
+                    <div class="mt-10">
+                        <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-xl bg-slate-900 px-6 py-3 text-white font-medium hover:bg-slate-800 transition-colors">
+                            Descargar FollowThings en App Store
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contacto" class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <p class="text-sm text-slate-500">© 2026 JacobStudio. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-6 text-sm">
+                    <a href="mailto:hola@jacobstudio.com" class="text-slate-600 hover:text-slate-900 transition-colors">hola@jacobstudio.com</a>
+                    <a href="https://github.com/JacoboDPH/JacobStudio" class="text-slate-600 hover:text-slate-900 transition-colors">GitHub</a>
+                </div>
+            </div>
+        </footer>
     </div>
-
 </body>
 </html>
