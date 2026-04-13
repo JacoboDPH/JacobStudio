@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FollowThings — Tu cuaderno de bitácora digital</title>
+    <meta name="description" content="FollowThings: organiza hábitos, hobbies y proyectos en una interfaz limpia y motivadora para iPhone y Apple Watch.">
+    <link rel="icon" href="../assets/followthings-icon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { color-scheme: light; }
+        html { scroll-behavior: smooth; scrollbar-gutter: stable both-edges; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        /* Fade-in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children */
+        .reveal-children > * {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s cubic-bezier(.16,1,.3,1), transform 0.6s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal-children.visible > * { opacity: 1; transform: translateY(0); }
+        .reveal-children.visible > *:nth-child(1) { transition-delay: 0ms; }
+        .reveal-children.visible > *:nth-child(2) { transition-delay: 80ms; }
+        .reveal-children.visible > *:nth-child(3) { transition-delay: 160ms; }
+        .reveal-children.visible > *:nth-child(4) { transition-delay: 240ms; }
+
+        /* Video placeholder */
+        .video-placeholder {
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px dashed #cbd5e1;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .video-placeholder:hover {
+            border-color: #94a3b8;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+        .video-placeholder video {
+            border: none;
+            border-radius: 1.5rem;
+        }
+
+        /* Screenshot hover */
+        .screenshot {
+            transition: transform 0.5s cubic-bezier(.16,1,.3,1);
+        }
+        .screenshot:hover {
+            transform: scale(1.03);
+        }
+
+        /* Hide scrollbar */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Horizontal scroll snap */
+        .snap-scroll {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .snap-scroll > * {
+            scroll-snap-align: center;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+
+    <!-- Nav -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+            <a href="../" class="text-sm text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                JacobStudio
+            </a>
+            <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer"
+               class="text-sm font-medium text-white bg-slate-900 hover:bg-black px-5 py-2 rounded-full transition-colors">
+                Descargar
+            </a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-32 md:pb-24 text-center">
+            <div class="reveal">
+                <img src="../assets/followthings-icon.png" alt="FollowThings icon"
+                     class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-[28%] shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+            </div>
+            <div class="reveal" style="transition-delay: 100ms;">
+                <h1 class="mt-8 text-5xl md:text-7xl font-semibold tracking-tight text-slate-950">
+                    FollowThings
+                </h1>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <p class="mt-5 text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                    Tu cuaderno de bitácora digital.<br class="hidden sm:block">
+                    Organiza hábitos, hobbies y proyectos en un solo lugar.
+                </p>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms;">
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer" aria-label="Descargar en App Store">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                             alt="Download on the App Store" class="h-14">
+                    </a>
+                    <span class="text-sm text-slate-400">Disponible para iPhone y Apple Watch</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero screenshot -->
+        <section class="max-w-5xl mx-auto px-6 pb-20 md:pb-28">
+            <div class="reveal">
+                <img src="../assets/followthings-01.png" alt="FollowThings — pantalla principal"
+                     class="mx-auto w-full max-w-sm rounded-3xl shadow-[0_24px_80px_rgba(0,0,0,0.12)]">
+            </div>
+        </section>
+
+        <!-- Video section -->
+        <section class="bg-slate-50 border-y border-slate-100">
+            <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+                <div class="reveal text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-slate-950">
+                        Míralo en acción
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-500 max-w-xl mx-auto">
+                        Una experiencia diseñada para ser clara, rápida y motivadora.
+                    </p>
+                </div>
+                <div class="reveal max-w-4xl mx-auto">
+                    <div id="video-container" class="video-placeholder aspect-video flex items-center justify-center">
+                        <!-- Replace the placeholder below with a real <video> tag when you have the video file -->
+                        <div id="video-placeholder-content" class="text-center p-8">
+                            <div class="w-20 h-20 mx-auto rounded-full bg-slate-900 flex items-center justify-center shadow-lg">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <p class="mt-5 text-slate-400 text-sm">Vídeo próximamente</p>
+                        </div>
+                        <!--
+                        TO ADD YOUR VIDEO:
+                        1. Place your video file (e.g., followthings-demo.mp4) in ../assets/
+                        2. Uncomment the <video> tag below and remove the placeholder div above
+
+                        <video controls playsinline preload="metadata" poster="../assets/followthings-01.png"
+                               class="w-full h-full object-cover rounded-3xl">
+                            <source src="../assets/followthings-demo.mp4" type="video/mp4">
+                        </video>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <div class="reveal text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-slate-950">
+                    Todo lo que necesitas.<br>Nada que te sobre.
+                </h2>
+            </div>
+
+            <div class="reveal-children grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <article class="rounded-2xl border border-slate-150 bg-slate-50/60 p-6">
+                    <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-slate-950">Registro instantáneo</h3>
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">Guarda sesiones, añade notas y puntúa tu progreso al instante.</p>
+                </article>
+                <article class="rounded-2xl border border-slate-150 bg-slate-50/60 p-6">
+                    <div class="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m6 0h6m-6 0V9a2 2 0 012-2h2a2 2 0 012 2v10m6 0v-4a2 2 0 00-2-2h-2a2 2 0 00-2 2v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-slate-950">Análisis visual</h3>
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">Rachas, gráficos y lectura rápida de tu evolución semanal y mensual.</p>
+                </article>
+                <article class="rounded-2xl border border-slate-150 bg-slate-50/60 p-6">
+                    <div class="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-slate-950">Biometría integrada</h3>
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">Frecuencia cardíaca y calorías sincronizadas con Apple Health.</p>
+                </article>
+                <article class="rounded-2xl border border-slate-150 bg-slate-50/60 p-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-slate-950">Captura multimedia</h3>
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">Fotos, notas de voz y valoraciones para documentar cada sesión.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- iPhone showcase -->
+        <section class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+            <div class="reveal grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div>
+                    <span class="inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 border border-teal-100">
+                        iPhone
+                    </span>
+                    <h2 class="mt-5 text-3xl md:text-4xl font-semibold tracking-tight text-slate-950">
+                        Diseñada para tu día a día
+                    </h2>
+                    <p class="mt-4 text-slate-500 leading-relaxed">
+                        Interfaz limpia y rápida. Registra hábitos con un toque, revisa tu progreso con gráficos claros
+                        y mantén la constancia con rachas visuales que te motivan a seguir.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-teal-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            Vista semanal con calendario interactivo
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-teal-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            Gráficos de horas activas y biometría
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-teal-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            Comparador visual de antes y después
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex gap-4 justify-center">
+                    <img src="../assets/followthings-03.png" alt="Captura multimedia" class="screenshot w-48 md:w-56 rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.1)]">
+                    <img src="../assets/followthings-02.png" alt="Biometría y esfuerzo" class="screenshot w-48 md:w-56 rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.1)] mt-8">
+                </div>
+            </div>
+        </section>
+
+        <!-- Apple Watch — dark section -->
+        <section class="bg-black text-white">
+            <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+                <div class="reveal text-center mb-14">
+                    <span class="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/80 border border-white/10">
+                        Apple Watch
+                    </span>
+                    <h2 class="mt-5 text-3xl md:text-5xl font-semibold tracking-tight">
+                        Desde tu muñeca
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-xl mx-auto">
+                        Inicia sesiones, mide tu tiempo con el cronómetro integrado y registra valoraciones sin sacar el iPhone.
+                    </p>
+                </div>
+
+                <div class="reveal flex gap-6 overflow-x-auto snap-scroll pb-4 hide-scrollbar justify-start md:justify-center">
+                    <img src="../assets/followthings-04.png" alt="Apple Watch — cronómetro" class="screenshot w-64 shrink-0 rounded-2xl border border-white/10 shadow-lg shadow-black/40">
+                    <img src="../assets/followthings-05.png" alt="Apple Watch — sesiones" class="screenshot w-64 shrink-0 rounded-2xl border border-white/10 shadow-lg shadow-black/40">
+                    <img src="../assets/followthings-06.png" alt="Apple Watch — lista" class="screenshot w-64 shrink-0 rounded-2xl border border-white/10 shadow-lg shadow-black/40">
+                    <img src="../assets/followthings-07.png" alt="Apple Watch — cronómetro activo" class="screenshot w-64 shrink-0 rounded-2xl border border-white/10 shadow-lg shadow-black/40">
+                    <img src="../assets/followthings-08.png" alt="Apple Watch — registro instantáneo" class="screenshot w-64 shrink-0 rounded-2xl border border-white/10 shadow-lg shadow-black/40">
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <div class="reveal text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-slate-950">
+                    Galería
+                </h2>
+                <p class="mt-4 text-lg text-slate-500">
+                    Cada pantalla tiene un propósito claro.
+                </p>
+            </div>
+            <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="../assets/followthings-01.png" alt="Pantalla principal" class="screenshot rounded-2xl shadow-md w-full">
+                <img src="../assets/followthings-02.png" alt="Biometría" class="screenshot rounded-2xl shadow-md w-full">
+                <img src="../assets/followthings-03.png" alt="Captura multimedia" class="screenshot rounded-2xl shadow-md w-full">
+                <img src="../assets/followthings-05.png" alt="Captura el momento" class="screenshot rounded-2xl shadow-md w-full">
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="border-t border-slate-100">
+            <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 text-center">
+                <div class="reveal">
+                    <img src="../assets/followthings-icon.png" alt="FollowThings"
+                         class="w-20 h-20 mx-auto rounded-[28%] shadow-[0_8px_24px_rgba(0,0,0,0.1)]">
+                    <h2 class="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-950">
+                        Empieza a registrar hoy
+                    </h2>
+                    <p class="mt-3 text-slate-500 max-w-md mx-auto">
+                        Descarga FollowThings gratis y lleva el control de lo que importa.
+                    </p>
+                    <div class="mt-8">
+                        <a href="https://apps.apple.com/us/app/follow-things/id1564720846" target="_blank" rel="noreferrer" aria-label="Descargar en App Store">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                 alt="Download on the App Store" class="h-14 mx-auto">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-4">
+            <p class="text-sm text-slate-400">&copy; 2026 JacobStudio. Todos los derechos reservados.</p>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="../" class="text-slate-500 hover:text-slate-900 transition-colors">JacobStudio</a>
+                <a href="mailto:jacobdphdeveloper@gmail.com" class="text-slate-500 hover:text-slate-900 transition-colors">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reveal on scroll -->
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal, .reveal-children');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
+</body>
+</html>
